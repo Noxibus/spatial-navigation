@@ -4,9 +4,6 @@
  */
 
 import React, { useCallback, useEffect, useState, useRef } from "react";
-// eslint-disable-next-line import/no-extraneous-dependencies
-import ReactDOMClient from "react-dom/client";
-// eslint-disable-next-line import/no-extraneous-dependencies
 import styled, { createGlobalStyle } from "styled-components";
 import shuffle from "lodash/shuffle";
 import {
@@ -17,8 +14,6 @@ import {
   FocusableComponentLayout,
   KeyPressDetails,
 } from "@noriginmedia/norigin-spatial-navigation";
-
-// const logo = require("../logo.png").default;
 
 init({
   debug: false,
@@ -45,11 +40,11 @@ const rows = shuffle([
 
 const assets = [
   {
-    title: "Asset 1",
+    title: "Taggart",
     color: "#714ADD",
   },
   {
-    title: "Asset 2",
+    title: "Take The High Road",
     color: "#AB8DFF",
   },
   {
@@ -92,9 +87,8 @@ const MenuItemBox = styled.div<MenuItemBoxProps>`
   background-color: #b056ed;
   border-color: white;
   border-style: solid;
-  border-width: ${({ focused }) => (focused ? "6px" : 0)};
+  border-width: ${({ focused }) => (focused ? "2px" : 0)};
   box-sizing: border-box;
-  border-radius: 7px;
   margin-bottom: 37px;
 `;
 
@@ -108,6 +102,8 @@ interface MenuWrapperProps {
   hasFocusedChild: boolean;
 }
 
+//container for the side drawer menu
+//TODO: Figure out how to make this into a normal functional component, research styled-components vs functional components
 const MenuWrapper = styled.div<MenuWrapperProps>`
   flex: 1;
   max-width: 246px;
@@ -119,16 +115,11 @@ const MenuWrapper = styled.div<MenuWrapperProps>`
   padding-top: 37px;
 `;
 
-const NmLogo = styled.img`
-  height: 57px;
-  width: 175px;
-  margin-bottom: 51px;
-`;
-
 interface MenuProps {
   focusKey: string;
 }
 
+//Parent in the navigation tree
 function Menu({ focusKey: focusKeyParam }: MenuProps) {
   const {
     ref,
@@ -149,14 +140,15 @@ function Menu({ focusKey: focusKeyParam }: MenuProps) {
     isFocusBoundary: false,
     focusKey: focusKeyParam,
     // preferredChildFocusKey: null,
+    //Are these doing anything at present?
     onEnterPress: () => {},
     onEnterRelease: () => {},
     onArrowPress: () => true,
     onFocus: () => {},
     onBlur: () => {},
-    extraProps: { foo: "bar" },
+    //extraProps: { foo: "bar" },
   });
-
+  //Helps us shift focus from menu to gallery rows
   useEffect(() => {
     focusSelf();
   }, [focusSelf]);
@@ -164,7 +156,7 @@ function Menu({ focusKey: focusKeyParam }: MenuProps) {
   return (
     <FocusContext.Provider value={focusKey}>
       <MenuWrapper ref={ref} hasFocusedChild={hasFocusedChild}>
-        {/* <NmLogo src={logo} /> */}
+        {/* TODO: ADD TITLES TO MENUITEMS */}
         <MenuItem />
         <MenuItem />
         <MenuItem />
@@ -192,9 +184,8 @@ const AssetBox = styled.div<AssetBoxProps>`
   background-color: ${({ color }) => color};
   border-color: white;
   border-style: solid;
-  border-width: ${({ focused }) => (focused ? "6px" : 0)};
+  border-width: ${({ focused }) => (focused ? "2px" : 0)};
   box-sizing: border-box;
-  border-radius: 7px;
 `;
 
 const AssetTitle = styled.div`

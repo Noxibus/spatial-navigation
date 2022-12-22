@@ -9,7 +9,6 @@ import {
 
 import ScrollingRows from "./ContentComponents/ScrollingRows";
 import rows from "../../constants/rows";
-
 import {
   SelectedItemBox,
   SelectedItemTitle,

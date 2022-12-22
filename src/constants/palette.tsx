@@ -9,7 +9,7 @@ export const palette = {
   GREY6: "#F6F6F6",
   PURPLE: "#810EA9",
   PURPLE2: "#9916C7",
-  PURPLE3: "#9916C7",
+  PURPLE3: "#A727A5",
   PURPLE4: "#C448F0",
   GREEN: "#90CF36",
   RED: "#E16A67",

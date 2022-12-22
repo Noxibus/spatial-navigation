@@ -7,6 +7,15 @@ interface MenuItemBoxProps {
   focused: boolean;
 }
 
+export const MenuTitle = styled.div`
+  color: #f6f6f6;
+  margin-bottom: 22px;
+  font-size: 27px;
+  font-weight: 700;
+  font-family: "Helvetica Neue";
+  padding-left: 60px;
+`;
+
 const MenuItemBox = styled.div<MenuItemBoxProps>`
   width: 171px;
   height: 51px;

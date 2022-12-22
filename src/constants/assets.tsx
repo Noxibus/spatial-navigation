@@ -1,4 +1,4 @@
-//TODO: REPLACE COLOURS WITH IMAGES
+//TODO: REPLACE COLOURS WITH IMAGES, fix random black tiles
 
 import { palette } from "./palette";
 const assets = [

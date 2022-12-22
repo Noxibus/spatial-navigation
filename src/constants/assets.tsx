@@ -1,40 +1,42 @@
 //TODO: REPLACE COLOURS WITH IMAGES
+
+import { palette } from "./palette";
 const assets = [
   {
     title: "Taggart",
-    color: "C448F0",
+    color: palette.PURPLE,
   },
   {
     title: "Take The High Road",
-    color: "#AB8DFF",
+    color: palette.PURPLE2,
   },
   {
     title: "Coronation Street",
-    color: "#512EB0",
+    color: palette.PURPLE3,
   },
   {
     title: "I'm a Celebrity",
-    color: "C448F0",
+    color: palette.PURPLE,
   },
   {
     title: "Loose Women",
-    color: "#9916C7",
+    color: palette.PURPLE2,
   },
   {
     title: "Low Winter Sun",
-    color: "#512EB0",
+    color: palette.PURPLE3,
   },
   {
     title: "Litvenenko",
-    color: "C448F0",
+    color: palette.PURPLE,
   },
   {
     title: "Spies Among Friends",
-    color: "#AB8DFF",
+    color: palette.PURPLE2,
   },
   {
     title: "Catch Phrase",
-    color: "#512EB0",
+    color: palette.PURPLE3,
   },
 ];
 

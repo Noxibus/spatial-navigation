@@ -1,6 +1,7 @@
 import styled from "styled-components";
+
 //Page title
-const ContentTitle = styled.div`
+export const ContentTitle = styled.div`
   color: white;
   font-size: 48px;
   font-weight: 600;
@@ -11,4 +12,10 @@ const ContentTitle = styled.div`
   margin-left: 60px;
 `;
 
-export default ContentTitle;
+//responsible for how content assets are rendered
+export const ContentWrapper = styled.div`
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+`;

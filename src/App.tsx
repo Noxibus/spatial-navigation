@@ -1,8 +1,3 @@
-/**
- * Since this file is for development purposes only, some of the dependencies are in devDependencies
- * Disabling ESLint rules for these dependencies since we know it is only for development purposes
- */
-
 import React, { useCallback, useEffect, useState, useRef } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import shuffle from "lodash/shuffle";
@@ -15,8 +10,10 @@ import {
   KeyPressDetails,
 } from "@noriginmedia/norigin-spatial-navigation";
 
+//TODO: BREAK DOWN INTO MODULAR COMPONENTS, SUSS OUT APP STATE AND DATA FLOW
+
 init({
-  debug: false,
+  debug: true,
   visualDebug: false,
 });
 
@@ -38,41 +35,42 @@ const rows = shuffle([
   },
 ]);
 
+//TODO: REPLACE COLOURS WITH IMAGES
 const assets = [
   {
     title: "Taggart",
-    color: "#714ADD",
+    color: "C448F0",
   },
   {
     title: "Take The High Road",
     color: "#AB8DFF",
   },
   {
-    title: "Asset 3",
+    title: "Coronation Street",
     color: "#512EB0",
   },
   {
-    title: "Asset 4",
-    color: "#714ADD",
+    title: "I'm a Celebrity",
+    color: "C448F0",
   },
   {
-    title: "Asset 5",
-    color: "#AB8DFF",
+    title: "Loose Women",
+    color: "#9916C7",
   },
   {
-    title: "Asset 6",
+    title: "Low Winter Sun",
     color: "#512EB0",
   },
   {
-    title: "Asset 7",
-    color: "#714ADD",
+    title: "Litvenenko",
+    color: "C448F0",
   },
   {
-    title: "Asset 8",
+    title: "Spies Among Friends",
     color: "#AB8DFF",
   },
   {
-    title: "Asset 9",
+    title: "Catch Phrase",
     color: "#512EB0",
   },
 ];
@@ -84,7 +82,7 @@ interface MenuItemBoxProps {
 const MenuItemBox = styled.div<MenuItemBoxProps>`
   width: 171px;
   height: 51px;
-  background-color: #b056ed;
+  background-color: #c448f0;
   border-color: white;
   border-style: solid;
   border-width: ${({ focused }) => (focused ? "2px" : 0)};
@@ -92,6 +90,7 @@ const MenuItemBox = styled.div<MenuItemBoxProps>`
   margin-bottom: 37px;
 `;
 
+//wee menu box
 function MenuItem() {
   const { ref, focused } = useFocusable();
 
@@ -104,6 +103,7 @@ interface MenuWrapperProps {
 
 //container for the side drawer menu
 //TODO: Figure out how to make this into a normal functional component, research styled-components vs functional components
+//TODO: Hide side menu if it isn't focused
 const MenuWrapper = styled.div<MenuWrapperProps>`
   flex: 1;
   max-width: 246px;
@@ -111,7 +111,7 @@ const MenuWrapper = styled.div<MenuWrapperProps>`
   flex-direction: column;
   align-items: center;
   background-color: ${({ hasFocusedChild }) =>
-    hasFocusedChild ? "#4e4181" : "#362C56"};
+    hasFocusedChild ? "#151515" : "#362C56"};
   padding-top: 37px;
 `;
 
@@ -119,6 +119,7 @@ interface MenuProps {
   focusKey: string;
 }
 
+//TODO: GET NAVIGATEBYDIRECTION WORKING WITH A REMOTE AND GIVE IT A TYPE
 //Parent in the navigation tree
 function Menu({ focusKey: focusKeyParam }: MenuProps) {
   const {
@@ -140,13 +141,13 @@ function Menu({ focusKey: focusKeyParam }: MenuProps) {
     isFocusBoundary: false,
     focusKey: focusKeyParam,
     // preferredChildFocusKey: null,
-    //Are these doing anything at present?
+    //Are these doing anything at present? > NO
     onEnterPress: () => {},
     onEnterRelease: () => {},
     onArrowPress: () => true,
     onFocus: () => {},
     onBlur: () => {},
-    //extraProps: { foo: "bar" },
+    extraProps: { foo: "bar" },
   });
   //Helps us shift focus from menu to gallery rows
   useEffect(() => {
@@ -167,6 +168,7 @@ function Menu({ focusKey: focusKeyParam }: MenuProps) {
   );
 }
 
+//Styling container for asset items, also points to dom ref
 const AssetWrapper = styled.div`
   margin-right: 22px;
   display: flex;
@@ -178,20 +180,23 @@ interface AssetBoxProps {
   color: string;
 }
 
+//gallery tile - TODO: Replace coloured box with image
+//color prop points to assets array, focused points to focus hook
 const AssetBox = styled.div<AssetBoxProps>`
   width: 225px;
   height: 127px;
   background-color: ${({ color }) => color};
-  border-color: white;
+  border-color: "#F6F6F6";
   border-style: solid;
   border-width: ${({ focused }) => (focused ? "2px" : 0)};
   box-sizing: border-box;
 `;
 
+//TODO: CHANGE FONT
 const AssetTitle = styled.div`
-  color: white;
+  color: #f6f6f6;
   margin-top: 10px;
-  font-family: "Segoe UI";
+  font-family: "Helvetica Neue";
   font-size: 24px;
   font-weight: 400;
 `;
@@ -207,6 +212,7 @@ interface AssetProps {
   ) => void;
 }
 
+//An asset is made up of asset data, wrapper, box, and title
 function Asset({ title, color, onEnterPress, onFocus }: AssetProps) {
   const { ref, focused } = useFocusable({
     onEnterPress,
@@ -225,19 +231,22 @@ function Asset({ title, color, onEnterPress, onFocus }: AssetProps) {
   );
 }
 
+//stylistic container
 const ContentRowWrapper = styled.div`
   margin-bottom: 37px;
 `;
 
+//TODO: Emulate padding and styling of stv player, change font
 const ContentRowTitle = styled.div`
-  color: white;
+  color: #f6f6f6;
   margin-bottom: 22px;
   font-size: 27px;
   font-weight: 700;
-  font-family: "Segoe UI";
+  font-family: "Helvetica Neue";
   padding-left: 60px;
 `;
 
+//this component makes rows scroll
 const ContentRowScrollingWrapper = styled.div`
   overflow-x: auto;
   overflow-y: hidden;
@@ -246,6 +255,7 @@ const ContentRowScrollingWrapper = styled.div`
   padding-left: 60px;
 `;
 
+//where asset tiles live, their container. Deleting these properties means only one tile per row appears
 const ContentRowScrollingContent = styled.div`
   display: flex;
   flex-direction: row;
@@ -261,6 +271,7 @@ interface ContentRowProps {
   ) => void;
 }
 
+//pulls all content row logic together
 function ContentRow({
   title: rowTitle,
   onAssetPress,
@@ -273,6 +284,8 @@ function ContentRow({
   const scrollingRef = useRef(null);
   //const scrollingRef = useRef();
 
+  //tearing this nd associated logic stops focus working
+  //TODO: Unpack and understand this callback
   const onAssetFocus = useCallback(
     ({ x }: { x: number }) => {
       scrollingRef.current.scrollTo({
@@ -280,9 +293,11 @@ function ContentRow({
         behavior: "smooth",
       });
     },
+    //TODO: What is scrolling ref
     [scrollingRef]
   );
 
+  //TODO: Map out lifecycle of focusKey
   return (
     <FocusContext.Provider value={focusKey}>
       <ContentRowWrapper ref={ref}>
@@ -305,6 +320,7 @@ function ContentRow({
   );
 }
 
+//responsible for how content assets are rendered
 const ContentWrapper = styled.div`
   flex: 1;
   overflow: hidden;
@@ -312,16 +328,19 @@ const ContentWrapper = styled.div`
   flex-direction: column;
 `;
 
+//Page title
 const ContentTitle = styled.div`
   color: white;
   font-size: 48px;
   font-weight: 600;
-  font-family: "Segoe UI";
-  text-align: center;
+  font-family: "Helvetica Neue";
+  text-align: left;
   margin-top: 52px;
   margin-bottom: 37px;
+  margin-left: 60px;
 `;
 
+//wrapper for the selected item icon (large one at the top of)
 const SelectedItemWrapper = styled.div`
   position: relative;
   display: flex;
@@ -329,14 +348,15 @@ const SelectedItemWrapper = styled.div`
   align-items: center;
 `;
 
+//the big box at the top of the screen, could link to media assets
 const SelectedItemBox = styled.div`
   height: 282px;
   width: 1074px;
   background-color: ${({ color }) => color};
   margin-bottom: 37px;
-  border-radius: 7px;
 `;
 
+//exactly what you think this is TODO: Change font
 const SelectedItemTitle = styled.div`
   position: absolute;
   bottom: 75px;
@@ -344,9 +364,11 @@ const SelectedItemTitle = styled.div`
   color: white;
   font-size: 27px;
   font-weight: 400;
-  font-family: "Segoe UI";
+  font-family: "Helvetica Neue";
 `;
 
+//contains a ref which seems to be linked to the way focused items and menus are connected.
+//Deleting will cause strange behaviour
 const ScrollingRows = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
@@ -354,15 +376,18 @@ const ScrollingRows = styled.div`
   flex-grow: 1;
 `;
 
+//brings all content logic together into one component
 function Content() {
   const { ref, focusKey } = useFocusable();
 
+  //Ripping out state and assetPress completely breaks things
   const [selectedAsset, setSelectedAsset] = useState(null);
 
   const onAssetPress = useCallback((asset: AssetProps) => {
     setSelectedAsset(asset);
   }, []);
 
+  //TODO: Suss out this thing
   const onRowFocus = useCallback(
     ({ y }: { y: number }) => {
       ref.current.scrollTo({
@@ -376,10 +401,10 @@ function Content() {
   return (
     <FocusContext.Provider value={focusKey}>
       <ContentWrapper>
-        <ContentTitle>Norigin Spatial Navigation</ContentTitle>
+        <ContentTitle>STV Player Clone</ContentTitle>
         <SelectedItemWrapper>
           <SelectedItemBox
-            color={selectedAsset ? selectedAsset.color : "#565b6b"}
+            color={selectedAsset ? selectedAsset.color : "#9916C7"}
           />
           <SelectedItemTitle>
             {selectedAsset
@@ -431,5 +456,3 @@ function App() {
 }
 
 export default App;
-//  const root = ReactDOMClient.createRoot(document.querySelector('#root'));
-//  root.render(<App />);

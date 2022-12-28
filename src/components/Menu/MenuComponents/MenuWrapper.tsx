@@ -12,7 +12,7 @@ const MenuWrapper = styled.div<MenuWrapperProps>`
   flex-direction: column;
   align-items: center;
   background-color: ${({ hasFocusedChild }) =>
-    hasFocusedChild ? "#151515" : "#362C56"};
+    hasFocusedChild ? "#151515" : "opacity: 100"};
   padding-top: 37px;
 `;
 

@@ -1,3 +1,5 @@
 THE FONT USED ON STV PLAYER IS SOURCE SANS PRO
 
 Note to self: Learn in depth how TypeScript works :')
+
+TODO: Add this font: https://fonts.google.com/specimen/Source+Sans+Pro

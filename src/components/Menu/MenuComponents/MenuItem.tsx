@@ -7,7 +7,7 @@ interface MenuItemBoxProps {
   focused: boolean;
 }
 
-export const MenuTitle = styled.div`
+export const MenuRowTitle = styled.div`
   color: #f6f6f6;
   margin-bottom: 22px;
   font-size: 27px;
@@ -16,10 +16,11 @@ export const MenuTitle = styled.div`
   padding-left: 60px;
 `;
 
+// background-color: ${({ focused }) => (focused ? "#c448f0" : "opacity: 100")};
 const MenuItemBox = styled.div<MenuItemBoxProps>`
   width: 171px;
   height: 51px;
-  background-color: #c448f0;
+  background-color: ${({ focused }) => (focused ? "#c448f0" : "opacity: 100")};
   border-color: white;
   border-style: solid;
   border-width: ${({ focused }) => (focused ? "2px" : 0)};

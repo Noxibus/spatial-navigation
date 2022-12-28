@@ -23,7 +23,8 @@ import ContentRow from "./ContentComponents/ContentRow";
 //TODO: ADDRESS INTERFACT DUPLICATION HERE AND IN ASSET.TSX
 interface AssetProps {
   title: string;
-  color: string;
+  color: any;
+  bannerImage: any;
   onEnterPress: (props: object, details: KeyPressDetails) => void;
   onFocus: (
     layout: FocusableComponentLayout,
@@ -59,7 +60,9 @@ function Content() {
         <ContentTitle>STV Player Clone</ContentTitle>
         <SelectedItemWrapper>
           <SelectedItemBox
-            color={selectedAsset ? selectedAsset.color : "#9916C7"}
+            // bannerImage={selectedAsset ? selectedAsset.color : "#9916C7"}
+            // //
+            color={selectedAsset ? selectedAsset.bannerImage : "#9916C7"}
           />
           <SelectedItemTitle>
             {selectedAsset

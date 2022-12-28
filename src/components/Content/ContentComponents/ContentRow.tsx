@@ -36,7 +36,6 @@ function ContentRow({
   });
 
   const scrollingRef = useRef(null);
-  //const scrollingRef = useRef();
 
   //tearing this nd associated logic stops focus working
   //TODO: Unpack and understand this callback

@@ -10,7 +10,8 @@ import { AssetTitle, AssetBox, AssetWrapper } from "./AssetHelpers";
 
 interface AssetProps {
   title: string;
-  color: string;
+  color: any;
+  //bannerImage: any;
   onEnterPress: (props: object, details: KeyPressDetails) => void;
   onFocus: (
     layout: FocusableComponentLayout,
@@ -19,7 +20,13 @@ interface AssetProps {
   ) => void;
 }
 //An asset is made up of asset data, wrapper, box, and title
-function Asset({ title, color, onEnterPress, onFocus }: AssetProps) {
+function Asset({
+  title,
+  color,
+  //bannerImage,
+  onEnterPress,
+  onFocus,
+}: AssetProps) {
   const { ref, focused } = useFocusable({
     onEnterPress,
     onFocus,

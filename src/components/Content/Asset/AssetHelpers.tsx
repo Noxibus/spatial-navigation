@@ -20,7 +20,6 @@ interface AssetBoxProps {
   focused: boolean;
   color: string;
 }
-
 //gallery tile - TODO: Replace coloured box with image
 //color prop points to assets array, focused points to focus hook
 export const AssetBox = styled.div<AssetBoxProps>`

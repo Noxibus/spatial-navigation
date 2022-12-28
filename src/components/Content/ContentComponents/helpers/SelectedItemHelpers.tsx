@@ -7,6 +7,7 @@ export const SelectedItemBox = styled.div`
   background-color: ${({ color }) => color};
   margin-bottom: 37px;
 `;
+//background - color: ${ ({ color }) => color };
 
 //wrapper for the selected item icon (large one at the top of)
 export const SelectedItemWrapper = styled.div`

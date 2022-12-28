@@ -1,10 +1,13 @@
 //TODO: REPLACE COLOURS WITH IMAGES, fix random black tiles
-
+import React from "react";
 import { palette } from "./palette";
+import Taggart from "../images/Taggart.jpg";
+
 const assets = [
   {
     title: "Taggart",
     color: palette.PURPLE,
+    bannerImage: <img src={Taggart} alt="" />,
   },
   {
     title: "Take The High Road",

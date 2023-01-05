@@ -11,20 +11,15 @@ interface MenuProps {
   focusKey: string;
 }
 
-//TODO: GET NAVIGATEBYDIRECTION WORKING WITH A REMOTE AND GIVE IT A TYPE
+//TODO: GET NAVIGATEBYDIRECTION WORKING WITH A REMOTE AND GIVE IT A TYPE, TEST HOOKS
 //Parent in the navigation tree
 function Menu({ focusKey: focusKeyParam }: MenuProps) {
   const {
+    //ref prop returned from onFocus/useFocusable
     ref,
     focusSelf,
     hasFocusedChild,
     focusKey,
-    // setFocus, -- to set focus manually to some focusKey
-    // navigateByDirection, -- to manually navigate by direction
-    // pause, -- to pause all navigation events
-    // resume, -- to resume all navigation events
-    // updateAllLayouts, -- to force update all layouts when needed
-    // getCurrentFocusKey -- to get the current focus key
   } = useFocusable({
     focusable: true,
     saveLastFocusedChild: false,
@@ -39,17 +34,18 @@ function Menu({ focusKey: focusKeyParam }: MenuProps) {
     onArrowPress: () => true,
     onFocus: () => {},
     onBlur: () => {},
-    extraProps: { foo: "bar" },
+    extraProps: { props: "props" },
   });
-  //Helps us shift focus from menu to gallery rows
+
+  //Focus on drawer menus first then from menu to gallery rows
   useEffect(() => {
     focusSelf();
   }, [focusSelf]);
 
   return (
+    // <div data-testid="Menu-1">
     <FocusContext.Provider value={focusKey}>
       <MenuWrapper ref={ref} hasFocusedChild={hasFocusedChild}>
-        {/* TODO: ADD TITLES TO MENUITEMS */}
         <MenuItem />
         <MenuItem />
         <MenuItem />
@@ -57,6 +53,7 @@ function Menu({ focusKey: focusKeyParam }: MenuProps) {
         <MenuItem />
       </MenuWrapper>
     </FocusContext.Provider>
+    //  </div>
   );
 }
 

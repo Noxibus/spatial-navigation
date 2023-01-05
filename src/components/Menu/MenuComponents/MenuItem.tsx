@@ -17,6 +17,7 @@ export const MenuRowTitle = styled.div`
 `;
 
 // background-color: ${({ focused }) => (focused ? "#c448f0" : "opacity: 100")};
+//TODO: TEST CONDITIONAL RENDERING
 const MenuItemBox = styled.div<MenuItemBoxProps>`
   width: 171px;
   height: 51px;

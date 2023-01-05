@@ -11,11 +11,14 @@ test("asset can be rendered", () => {
 //Arrange : navigate using spatial navigation virtually
 //Act move between assets
 //Assert that an asset can be focused
-//TODO: FIX THIS LOGIC
+
 describe("<Asset/> test", () => {
-  it("can be focused", () => {
-    const isFocusedProps = { ...Asset.props, focused: true };
-    const focusWrapper = render(Asset);
-    jest.expect(focusWrapper.isFocused);
+  test("can be focused", () => {
+    const isFocusedProps = { ...Asset.props, onFocus: true };
+    const focusWrapper = render(<Asset />);
+    //TODO: FIX THIS LOGIC
+    expect(Asset.isFocusedProps).toBeTruthy();
   });
 });
+
+//should I check asset keys here?

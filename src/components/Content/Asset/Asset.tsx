@@ -27,6 +27,7 @@ function Asset({
   onEnterPress,
   onFocus,
 }: AssetProps) {
+  //TODO: TEST HOOK
   const { ref, focused } = useFocusable({
     onEnterPress,
     onFocus,

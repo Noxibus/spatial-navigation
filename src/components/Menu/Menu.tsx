@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+
 import {
   useFocusable,
   FocusContext,
@@ -6,9 +7,14 @@ import {
 
 import MenuItem from "./MenuComponents/MenuItem";
 import MenuWrapper from "./MenuComponents/MenuWrapper";
+import menucategories from "../../constants/menu-categories";
 
 interface MenuProps {
   focusKey: string;
+}
+
+interface MenuItemProps {
+  title: string;
 }
 
 //TODO: GET NAVIGATEBYDIRECTION WORKING WITH A REMOTE AND GIVE IT A TYPE, TEST HOOKS
@@ -46,11 +52,15 @@ function Menu({ focusKey: focusKeyParam }: MenuProps) {
     // <div data-testid="Menu-1">
     <FocusContext.Provider value={focusKey}>
       <MenuWrapper ref={ref} hasFocusedChild={hasFocusedChild}>
-        <MenuItem />
-        <MenuItem />
-        <MenuItem />
-        <MenuItem />
-        <MenuItem />
+        {/* TODO: Add on-click props to navigate routes */}
+        {/* {menucategories.map(((MenuItem: MenuItemProps){ title }) => {
+          <MenuItem title={title} />;
+        })} */}
+        <MenuItem title={"Watch Live"} />
+        <MenuItem title={"Home"} />
+        <MenuItem title={"Categories"} />
+        <MenuItem title={"Tv Guide"} />
+        <MenuItem title={"My List"} />
       </MenuWrapper>
     </FocusContext.Provider>
     //  </div>

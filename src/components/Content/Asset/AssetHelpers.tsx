@@ -20,7 +20,7 @@ interface AssetBoxProps {
   focused: boolean;
   color: string;
 }
-//TODO: TEST CONDITIONAL RENDERING
+//TODO: TEST CONDITIONALSD
 //gallery tile - TODO: Replace coloured box with image
 //color prop points to assets array, focused points to focus hook
 export const AssetBox = styled.div<AssetBoxProps>`

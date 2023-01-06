@@ -1,10 +1,7 @@
 import React from "react";
 import { init } from "@noriginmedia/norigin-spatial-navigation";
-
-import GlobalStyle from "./components/GlobalStyle";
-import Content from "./components/Content/Content";
-import Menu from "./components/Menu/Menu";
-import AppContainer from "./components/AppContainer";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Homepage from "./components/pages/Home";
 
 init({
   debug: true,
@@ -14,11 +11,7 @@ init({
 function App() {
   return (
     <React.StrictMode>
-      <AppContainer>
-        <GlobalStyle />
-        <Menu focusKey="MENU" />
-        <Content />
-      </AppContainer>
+      <Homepage />
     </React.StrictMode>
   );
 }

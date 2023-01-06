@@ -11,9 +11,9 @@ const MenuWrapper = styled.div<MenuWrapperProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: ${({ hasFocusedChild }) =>
-    hasFocusedChild ? "#151515" : "opacity: 100"};
+  background-color: ${({ hasFocusedChild }) => "#151515"};
   padding-top: 37px;
 `;
-
+// background-color: ${({ hasFocusedChild }) =>
+// hasFocusedChild ? "#151515" : "opacity: 100"};
 export default MenuWrapper;

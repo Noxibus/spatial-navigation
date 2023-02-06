@@ -43,7 +43,6 @@ function Content() {
     setSelectedAsset(asset);
   }, []);
 
-  //TODO: Suss out this thing
   const onRowFocus = useCallback(
     ({ y }: { y: number }) => {
       ref.current.scrollTo({
